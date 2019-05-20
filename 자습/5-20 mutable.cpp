@@ -75,7 +75,5 @@ int main()
 
 	Here.OutInfo();
 
-
-
 	return 0;
 }

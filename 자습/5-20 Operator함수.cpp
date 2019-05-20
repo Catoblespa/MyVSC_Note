@@ -8,7 +8,7 @@ using namespace std;
 
 /*
 http://soen.kr/lecture/ccpp/cpp3/28-1-3.htm
-http://soen.kr/lecture/ccpp/cpp3/28-2-3.htm     // 연산자 오버로딩의 규칙
+http://soen.kr/lecture/ccpp/cpp3/28-2-3.htm     // 연산자 오버로딩의 규칙   
 
 ① 클래스의 멤버 함수로 작성한다.
 ② 전역 함수로 작성한다.
@@ -92,7 +92,7 @@ void main()
 	C.OutTime();
 }
 
-
+/*
 //===========================================상수 오퍼레이터========================================================================
 #include <iostream>
 #include <Windows.h>
@@ -178,5 +178,5 @@ void main()
 	A = 5 + A;
 
 	A.OutTime();
-
 }
+*/
