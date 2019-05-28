@@ -21,9 +21,9 @@ using namespace std;
   이 절에서 각 반복자 종류들의 기능을 순서대로 살펴 볼 예정이므로 도표를 통해 이름부터 파악해 놓자.
   //================================================================================================================
 /// 반복자		약어			설명														원어
-	입력			InIt		오로지 입력만 가능하며 쓸 수는 없다.						input_iterator_tag
+	입력		InIt		오로지 입력만 가능하며 쓸 수는 없다.						input_iterator_tag
 
-	출력			OutIt		출력만 가능하며 읽지는 못한다.								output_iterator_tag
+	출력		OutIt		출력만 가능하며 읽지는 못한다.								output_iterator_tag
 
 	순방향		FwdIt		입출력이 모두 가능하다. 전진만 가능하다.					forward_iterator_tag
 

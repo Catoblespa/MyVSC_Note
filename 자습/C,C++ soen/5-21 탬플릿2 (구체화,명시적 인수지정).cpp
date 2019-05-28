@@ -78,13 +78,15 @@ void func(void)
 }
 
 
+
+
 void main()
 {
 	//unsigned cast(int), double cast(int) 두 버전의 함수가 구체화되는데 이 두 함수는 이름이 동일하고 인수 목록까지 같으므로 오버로딩 조건을 만족하지 못한다. 
 	//이처럼 리턴 타입만 다른 경우라도 템플릿에 의해 각각 따로 구체화될 수는 있지만 호출할 때 어떤 함수를 호출하는지를 반드시 밝혀야 한다.
 	// cast <Type>(int); 이런식으로 어떤 템플릿 함수를 호출할건지 지정한다. Type의 형식에따라 템플릿함수가 호출된다.
 
-	//unsigned  i = cast<unsigned>(1234); 를 사용한 순간 cast<unsigned>(unsigned)가 구체화 됬다. (확정됬다.)
+	//unsigned  i = cast<unsigned>(1234); 를 사용한 순간 cast<unsigned>(unsigned)가 구체화 됬다. (확정됬다. )
 	unsigned  i = cast<unsigned>(1234);		//1234라는 상수는 cast의 정수형 인수로 고정되어 있을 뿐이지 T를 결정하는데는 사용할 수 없다. 
 	double d = cast<double>(5678);
 

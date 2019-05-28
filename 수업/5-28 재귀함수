@@ -1,0 +1,11 @@
+재귀 함수
+
+void Recursive()
+{
+    cout << "asdasd" <<endl;
+
+    Recursive(); //재귀 호출
+}
+
+    재귀 함수를 다루 때 반드시 탈출 조건이 있어야한다.
+    탈출조건이 없으면, Stack overflow가 일어난다.

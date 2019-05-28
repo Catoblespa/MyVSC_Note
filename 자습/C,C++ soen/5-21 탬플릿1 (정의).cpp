@@ -65,7 +65,7 @@ void Swap(T& a, T& b)
 	t = a; a = b; b = t;
 }
 
-
+	
 struct tag_st { int i; double d; };
 
 void main()

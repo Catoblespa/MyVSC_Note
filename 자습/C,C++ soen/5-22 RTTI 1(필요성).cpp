@@ -25,7 +25,7 @@ public:
 																
 															
 
-void func(Parent* p)											//// if (strcmp(typeid(*p).name(), "class Child") == 0)
+void func(Parent* p)											//// if (typeid(*p)==typeid(Child)) == 0)
 {																// 	((Child*)p)->PrintNum(); 
 	p->PrintMe();												// else
 	((Child*)p)->PrintNum();									// 	puts("이 객체는 num을 가지고 있지 않습니다.");
