@@ -10,7 +10,7 @@ using namespace std;
 
 /*
 
-decltype??
+decltype?? 
 
 
 decltype은 declared type(선언된 형식)의 줄임말로써, 주어진 이름이나 표현식의 구체적인 타입을 알려주는 키워드이다.

@@ -38,7 +38,8 @@ int main()
 								 //이런식으로 인수가 다른 함수를 함수포인터에 강제로 캐스팅하여 대입할경우 스택구조가 망가지니 주의 !
 								 // 앵간하면 강제 캐스팅하지 말자
 	
-
+	//함수 포인터 배열
+	// int (*pf2[2])(int, int) = { Func1, Func2}; 이렇게 선언하고 초기화
 	cout  <<"======================= typedef 식의 함수포인터 선언================="<< endl;
 	PFTYPE pf2[2];		//typedef int (*PFTYPE)(int, int);	//하는 김에 함수포인터 배열을 사용해보자
 	pf2[0] = add;
@@ -49,6 +50,14 @@ int main()
 											
 	int select = 0;							// select 가 0일때는 pf2 는 add, 1일때는 sub
 	cout <<" pf2[select](20, 40) , "<< "select is " << select << " : "<< pf2[select](20, 40) << endl;
+
+
+
+	//auto형식의 함수는 함수포인터로 받을수 있지만,
+	//auto리턴, 탬플릿함수일 경우 함수 포인터로 받을 수 없다.
+	//T리턴, T템플릿일경우 auto로 받을 수 있다.
+
+
 
 	return 0;
 }

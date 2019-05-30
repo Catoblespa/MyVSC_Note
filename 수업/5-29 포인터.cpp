@@ -54,3 +54,28 @@
 	cout << *(*(ptr+1)+2) <<endl; // ptr[1][2]와 같은 출력값.
 	cout << sizeof(ptr[1]) <<endl; // 12출력 : 1행의 총 크기가 반환
 	cout << sizeof(ptr[1][0]) <<endl; // 4출력 : 1행 0번째 값의 크기 반환.
+
+
+	char szName[5] = {'H','e', 'l', 'l', 'o'};
+	cout <<szName<<endl;		// Hello~쓰래기값~
+	//cout은 szName의 길이를 알지 못하지 때문에 문자열배열에는 끝을 표시해줘야한다.
+	   
+	char szName2[6] = {'H','e', 'l', 'l', 'o' , '\0'};
+	cout <<szName2<<endl;		// Hello
+	//cout은 char*을 만나면 이주소로부터 null문자를 만나기 전까지 출력한다.   null 문자 = '\0'
+
+	char szName3[6] = "Hello";  // 이렇게 초기화 할경우 szName3는 마지막에 자동으로 \0가 삽입된다.
+	cout <<szName3<<endl;		// Hello
+
+	const char* zsPName = "Hello";
+
+	cout << zsPName << endl; //Hello
+	cout << (int*)zsPName << endl;		//00929B30 같은 주소를 같게 되는데 그 이유는 컴파일러가 상수를 Data영역에 문자배열로 등록되기 때문이다.
+	cout << (int*) "Hello" << endl;		//00929B30
+
+
+	//char* pInput;							//불가능!! 입력받지 않아서 정상적인 메모리를 나타낼수 없음
+	//char * pInput == nullptr 	// 같은 이유로 불가능!
+	char pInput[6] = "";				//문자열을 입력 받고 싶을땐 이렇게 할것.
+	cin >> pInput;
+	cout << pInput << endl;

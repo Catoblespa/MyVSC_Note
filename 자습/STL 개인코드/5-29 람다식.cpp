@@ -25,6 +25,13 @@ int exSum = 0;
 
 //람다식을 사용한 재귀
 /*
+
+람다는 함수객체를완전히 대체할 수 있는 물건이다.
+람다식은 이름없는 함수를 선언 할수 있고, 함수객체를 사용하는 알고리즘에 조금더 직관성을 높여준다.
+필요에 의하면 람다함수에 이름을 붙여 , 재사용 할 수도 있다.
+
+
+
 람다식의 기본형
 [captures](parameters) -> return type {body}
 	* captures: comma(,)로 구분된 캡처들이 들어갑니다.		 캡처는 lambda에서 사용할 변수나 상수들을 미리 지정하여 찍어오는 것
@@ -79,10 +86,14 @@ function<int(int n)> fectorial = [&](int n) {
 		return 1;
 	return n * fectorial(n - 1);
 };
+//보통 lambda 함수를 대입시킬 변수의 타입을 tr1::function이 아닌 auto로 잡는다.
+//헌데, lambda 함수를 recursive 함수로 작성할 땐 반드시 auto가 아닌 tr1::function 타입으로 잡아야 한다. 반드시!
+// 왜냐하면 auto로 할경우 return 에서 타입을 추정한후 return 해야하는데, return으로 타입추정이전에 fectorial을 불러오기 때문.
+
 
 
 //클래스 멤버 함수안에서 lambda를 정의하면 [this]로 현재 객체를 참조로 캡처할 수 있습니다. 
-//이때 lambda는 friend 함수이므로 현재 객체의 private 멤버에도 접근할 수 있습니다.
+//이때class인 Person은  lambda를 friend 함수로 현재 객체의 private 멤버에도 접근할 수 있습니다.
 class Person {
 public:
 	Person(std::string name) : name(name) {}
@@ -94,6 +105,12 @@ private:
 };
 //클래스 멤버 함수안에서 정의되는 것뿐만 아니라 lambda 자체가 멤버로 선언될 수도 있습니다. 
 //이럴 경우 기존 멤버 다루듯 하면 됩니다. [this]로 현재 객체를 참조로 캡처할 수 있는 것도 마찬가지입니다.
+
+
+
+
+
+
 
 
 /*람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다람다
