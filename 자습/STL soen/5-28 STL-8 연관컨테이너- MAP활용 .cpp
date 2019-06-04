@@ -36,11 +36,11 @@ struct { const char* first; unsigned second; } sites[] = {
 	 {"www.borland.com",0xbbbbbbbb},
 	 {"kangcom.com",0xccaabbdd},
 	 {"www.maxplusone.com",0x12345678},
+	 
 };
 
 int main()
 {
-
 	map<string, unsigned> dns;
 	int i;
 

@@ -79,3 +79,71 @@
 	char pInput[6] = "";				//문자열을 입력 받고 싶을땐 이렇게 할것.
 	cin >> pInput;
 	cout << pInput << endl;
+
+
+
+
+
+
+
+
+
+	//#1 문자열 길이 구하는 표준 함수 <string.h> 에서 제공
+	//null문자를 제외한 순수 문자열 길이를 구한다.
+	// size_t strlen(const *char)
+
+	char szName[6] = "World";
+	cout << "길이 : " << strlen(szName) << endl;
+	cout << "메모리 크기 : " << sizeof(szName) << endl;
+
+	//strcmp(cosnt char *, size , const char *) 문자열 비교하는 표준함수
+	// 같으면 0을 반환 ,다르면 0이 아닌수를 반환.
+
+
+	//strcpy_s (cosnt char *ch1, int size , const char *ch2) 문자열을  ch2를 ch1으로 복사한다.
+	//ch1이 배열의 이름일 경우 size를 안넣어줘도 된다.
+	//ch1에 크기는 ch2의 크기만큼 넉넉 해야한다.
+	char szName_1[32] = "";
+	char szName_2[32] = "Hello";
+	strcpy_s(szName_1,sizeof(szName_2), szName_2);
+	cout << szName_1 << endl;
+	cout << szName_2 << endl;
+
+	char* ptr = szName_1;
+//	strcpy(pty, szName_2); 에러!
+
+
+
+
+	//memcpy (dst , src, size)
+	//메모리 대 메모리 간의 값 복사 함수
+	//src로부터 size만큼 dst에게 복사한다.
+	//복사 수행 과정 중에 임시 버퍼를 거치지않는다.
+
+
+	int iArr_1[5] = {};
+	int iArr_2[5] = { 10,20,30,40,50 };
+
+	memcpy(iArr_1, iArr_2, 16);	//40까지 복사됨.
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "iArr_1[" << i << "]:" << iArr_1[i] << endl;
+		cout << "iArr_2[" << i << "]:" << iArr_2[i] << endl;
+		cout << "=======================================" << endl;
+	}
+
+
+	// memmove 함수
+	// memmove (srd로 부터 size만큼 dst에게 복사(이동)한다
+	// memcpy와 다르게 버퍼를 거치므로 조금더 느리다.
+	// 복사를 수행하는데 메모리가 겹치는 구간이 있다면 memcpy보다 memmove를 써야한다.
+	// 만약 겹치는 구간에 memcpy를 사용하면 VS에서는 사용가능하지만, 다른 환경에서는 에러가 난다.
+	memmove(iArr_2, iArr_2 + 1, 16);
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "iArr_2[" << i << "]:" << iArr_2[i] << endl;
+		cout << "=======================================" << endl;
+	}
+
+	return 0;

@@ -20,12 +20,13 @@ using namespace std;
 
 
 /*
-transform
-transform 함수는 반복자 구간에 대해 함수 객체를 적용한 후 그 결과를 다른 구간에 복사한다. 단항 함수를 취하는 버전과 이항 함수를 취하는 버전 두 가지가 있다.
+sform
+sform 함수는 반복자 구간에 대해 함수 객체를 적용한 후 그 결과를 다른 구간에 복사한다. 
+단항 함수를 취하는 버전과 이항 함수를 취하는 버전 두 가지가 있다.
 
 
-OutIt transform(InIt first, InIt last, OutIt result, UniOp op);
-OutIt transform(InIt1 first1, InIt1 last1, InIt2 first2, OutIt result, BinOp op);
+OutIt sform(InIt first, InIt last, OutIt result, UniOp op);
+OutIt sform(InIt1 first1, InIt1 last1, InIt2 first2, OutIt result, BinOp op);
 */
 
 template<typename C> void dump(const char* desc, C c) {
