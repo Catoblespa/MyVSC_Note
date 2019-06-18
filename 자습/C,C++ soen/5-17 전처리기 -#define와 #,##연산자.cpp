@@ -20,6 +20,19 @@
 //이 연산자는 주로 일괄적인 타입 정의에 사용된다.
 #define defptype(type) typedef type *p##type
 
+
+//#define의 코드가 두줄 이상일때 \를 쓰면 다음 줄까지 인식 시킨다.
+//단 \뒤에는 공백이 남아 있으면 안되니 주의 !
+#define SAFE_DELETE(ptr)	\
+if(ptr) 					\
+{							\
+	delete ptr; 			\
+	ptr = null;				\
+}
+
+#define PI 3.14f
+#define SQUARE(X)	(X)*(X)
+#define AREA_CIRCLE(R) SQUARE(R) * PI//  쌉가능
 using namespace std;
 
 int main()
