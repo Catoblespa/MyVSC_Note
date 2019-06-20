@@ -15,14 +15,14 @@ using namespace std;
 
 
 template <class T>
-
 void Swap(T& a, T& b)
 {
 	T t;
 	t = a; a = b; b = t;
 }
 
-template <> void Swap<double>(double& a, double& b)
+template <> 
+void Swap<double>(double& a, double& b)
 {
 	int i, j;
 	i = (int)a;
@@ -69,12 +69,13 @@ int main()
 //③ template <> void Swap(double& a, double& b)
 //④ void Swap<double>(double& a, double& b)
 //⑤ void Swap<>(double& a, double& b)
-//⑥ void Swap(double& a, double& b)
+//⑥ void Swap(double& a, double& b)  No!!
 
 //특수화된 함수라는 것을 표시하기 위해 template <> 로 시작하는데 <>가 없으면 명시적 구체화 구문이 되므로 잘 구분해야 한다.
 //1.함수 이름 뒤에는 어떤 타입에 대한 특수화 함수인지 <> 괄호와 특수화된 타입 이름을 밝힌다
 //2.①번 표기법이 가장 완전한 형태이되 좀 더 간략한 표기법도 쓸 수 있다. 
-		//어떤 타입에 대해 특수화되었는지는 어차피 인수의 타입으로도 알 수 있으므로 함수명 다음의 <> 괄호는 생략 가능하며 <>만 남겨 두고 타입만 생략하는 것도 가능하다. 
+		//어떤 타입에 대해 특수화되었는지는 어차피 인수의 타입으로도 알 수 있으므로 함수명 다음의 <> 괄호는 생략 가능하며 
+		//<>만 남겨 두고 타입만 생략하는 것도 가능하다. 
 		//단, 템플릿 인수가 리턴 타입이나 내부 지역변수로 사용될 때는 ①번 타입만 가능하다.
 
 //3.또한 ④번처럼 함수명 다음에 <> 괄호가 있다면 이 표기로부터 함수 템플릿에 대한 특수화 함수라는 것을 알 수 있으므로 앞쪽의 template <> 도 생략 가능하다.
