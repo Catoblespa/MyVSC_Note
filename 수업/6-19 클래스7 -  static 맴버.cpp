@@ -1,131 +1,81 @@
-
-/////////////////////////////////////////////////CPlayer.h///////////////////////////////////////////////////////
-#pragma once
-//#include "CMonster.h"
-
-class CMonster;
-
-class CPlayer
-{
-private:
-	CMonster* mon;
-public:
-	CPlayer();
-	~CPlayer();
-	void Func();
-};
-
-
-
-//////////////////////////////////////////////////CPlayer.cpp////////////////////////////////////////////////////////////
-#include "CPlayer.h"
-
-//cpp에 CMonster.h를 인클루드 하면!!! 된다!!!
-#include "CMonster.h"
-
-
-CPlayer::CPlayer()
-{
-	//메모리의 크기 모르니까 이것도 불가능
-	//cpp에서 #include "CMonster.h" 를 해주면 쌉가능!!
-	mon = new CMonster;
-}
-
-CPlayer::~CPlayer()
-{
-
-	delete mon;
-}
-
-void CPlayer::Func()
-{
-	mon->Func(); // 
-}
-
-
-
-
-
-
-/////////////////////////////////////////////////CMonster.h///////////////////////////////////////////////////////
-#pragma once
-//#include "CPlayer.h"
-
-
-class CPlayer; //전방선언
-
-class CMonster
-{
-private:
-	//전방선언 만으로는 해당 클래스의 메모리를 알 수없으므로 포인터로 선언
-	CPlayer* player;
-
-public:
-	CMonster();
-	~CMonster();
-
-	void Func();
-
-
-};
-
-
-
-//////////////////////////////////////////////////CMonster.cpp////////////////////////////////////////////////////////////
-#include "CMonster.h"
-#include "CPlayer.h"
-
-
-CMonster::CMonster()
-{
-	player = new CPlayer;
-}
-
-
-CMonster::~CMonster()
-{
-	delete player;
-}
-
-void CMonster::Func()
-{
-}
-
-
-
-
-
-//////////////////////////////////////////////////Main/////////////////////////////////////////////////////////
 #include <iostream>
-
-#include "CPlayer.h"
-#include "CMonster.h"
-
+#include <time.h>
+#include <string>
+#include <vector>
+#include <list>
+#include <map>
+#include <algorithm>
+#include <functional>
 using namespace std;
 
 #define randomize() srand((unsigned)time(NULL))     // srand 매크로
 #define random(n) (rand() % (n))                    // rand 매크로.
 /*
-CP.h 에서는 CM.h를 참조하고
-CM.h 에서는 CP.h를 참조하면 
-상호 참조로 인한 무한루프에 빠지게 된다.
 
-이걸 해결하기 위한 '전방선언'을 사용 할 수있다
-그러나 전방선언은 클래스 이름만 알려줄뿐.
-해당 클래스의 크기나 함수를 알려주지 않는다.
-그러므로 전방선언한 헤더에서는 CPlayer player 처럼 선언 할 수없다.
-
-선언을 하려면 메모리 크기가 명확한 CPlayer *player 로 선언해야한다.
-
-예를들어서 CPlayer.h 에서 CMonster객체를 선언하고 싶으면
-CPlayer.h에서 class CMonster으로 전방선언 후,
-Cplayer.cpp 에서 CMonster.h 를 인클루드 한다. 이래 되면 CPlayer에서는 CMonster의 크기를 알 수 있다.
-CPlayer.h에서 맴버변수 CMonster *CM으로 포인터형으로 선언한 뒤 , 생성자에서 동적할당후 사용하도록 하자.
-단, CPlayer.h에서 Monster를 상속받는 행위는 안됨.
+##1 클래스와 this 포인터
+클래스의 맴버변수는 객체마다 할당 된다.
 
 */
 
-int main()
+class CTest
 {
 
+private:
+	int m_iValue;
+
+	//static 맴버변수를 이렇게 써도 선언된거는 아니다! 밖에서 초기화 해주는게 진짜 선언임
+	//
+	static int ms_iV2;
+public:
+	CTest(int a)
+	{
+		/*this->*/m_iValue = a;
+	};
+	~CTest();
+
+	void Func()
+	{
+		cout <<"m_iValue"<< &/*this->*/m_iValue << endl;
+		cout <<"ms_iV2"<< &ms_iV2 << endl;
+	}
+	void PrintThis()
+	{
+		//this 포인터 : 현재 객체의 주소를 저장한 포인터
+		cout << "this :" << this << endl;
+	}
+
+	static void StaticFunc()
+	{
+		//static 함수에서는 this 호출 불가능
+		//cout << this << endl;
+		//맴버 함수, 맴버 변수도 호출 불가능하다.
+		//Func();
+		//static 함수는 객체에 종속되지 않는다!
+		cout << "이 함수는 누구의 소유도 아닙니다" << endl;
+	}
+};
+
+//스태틱 맴버 변수 초기화 구문!
+//스태틱 변수는 이니셜라이저로 초기화 불가능! 
+int CTest::ms_iV2 = 0;
+
+
+int main()
+{
+	//##2 static 맴버 함수
+	//객체 생성 없이도 호출 할 수 있는 함수
+	//앞으로 C++에서 전역함수를 다룰 때 static 맴버 함수로 다룰것!!
+	CTest ob1(300);
+	CTest ob2(300);
+	CTest ob3(300);
+	ob1.Func();
+	ob2.Func();
+	ob3.Func();
+
+	cout << "==================" << endl;
+
+}
+
+CTest::~CTest()
+{
 }
