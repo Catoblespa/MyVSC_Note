@@ -25,6 +25,20 @@ ex)
 
 
 
+            원소 배치                       메모리 방식
+표준 시퀀스 컨테이너                   배열기반     : vector, deque
+vector , list , deque                 노드 기반   :  list, map, multimap ...~
+
+표준 연관 컨테이너
+map, mulitmap ,set , multiset
+
+컨테이너 어댑터
+stack queue prioriy queue
+
+근사 컨테이너
+string 
+
+
 
 
 
