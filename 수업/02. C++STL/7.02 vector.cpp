@@ -80,13 +80,28 @@ int main()
 	cout << "------------------" << endl;
 
 //*********************************************************
+	//*********************************************************
 	//shrink_to_fit  함수  C++ 11부터 지원하는 함수
 	//현재 capacity를 현재 size에 맞추는 함수.
 	vec.shrink_to_fit();
+	cout << "vec.shrink_to_fit();" << endl;
 	cout << "vec size     : " << vec.size() << endl;
 	cout << "vec capacity : " << vec.capacity() << endl;
 	cout << "------------------" << endl;
 
+
+	vec.reserve(10);
+	cout << "vec.reserve(10);" << endl;
+	cout << "vec size     : " << vec.size() << endl;
+	cout << "vec capacity : " << vec.capacity() << endl;
+	cout << "------------------" << endl;
+
+
+	vec.resize(10);
+	cout << "vec.resize(10);" << endl;
+	cout << "vec size     : " << vec.size() << endl;
+	cout << "vec capacity : " << vec.capacity() << endl;
+	cout << "------------------" << endl;
 //*********************************************************
 
 

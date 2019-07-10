@@ -78,9 +78,9 @@ private:
 
 public:
 	Position(int ax, int ay, char ach) { x = ax; y = ay; ch = ach; }
-	void OutPosition() const { gotoxy(x, y); putch(ch); }				//단순히 값으 읽기만 하는 함수로, const화 한다.
+	void OutPosition() const { gotoxy(x, y); putch(ch); }				//단순히 값으로 읽기만 하는 함수로, const화 한다.
 	void MoveTo(int ax, int ay) { x = ax; y = ay; }						//x,y값을 변경하는 함수이기 떄문에 const화 하기 부적절한 함수
-																		//맘ㄴ약 MoveTo 함수에서 값을 변경하려 하면 에러가 뜨게 된다.
+																		//만약 MoveTo 함수에서 값을 변경하려 하면 에러가 뜨게 된다.
 	// ****멤버 함수라도 정적 멤버 변수의 값은 변경할 수 있는데 정적 멤버는 객체의 소속이 아니며 객체의 상태를 나타내지도 않기 때문이다.
 
 	//비상수 멤버 함수가 받는 객체 포인터 this는 Position * const 형이며 this 자체는 상수이지만 this가 가리키는 대상은 상수가 아니다.

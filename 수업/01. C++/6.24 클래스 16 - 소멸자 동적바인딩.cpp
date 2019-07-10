@@ -18,14 +18,13 @@ public:
 class CPlayer :public CGameObject
 {
 public:
-	virtual ~CPlayer()
-	{
-		cout << "자식 소멸자" << endl;
-	}
-
 	CPlayer()
 	{
 		cout << "자식 생성자 " << endl;
+	}
+	virtual ~CPlayer()
+	{
+		cout << "자식 소멸자" << endl;
 	}
 };
 
