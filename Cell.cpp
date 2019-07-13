@@ -17,8 +17,8 @@
 #define Hell_MIN_H 180	//헬
 #define Hell_MAX_H 190	//헬
 #define CORE_H 195
-#define AUTOMATA 3
-
+#define AUTOMATA 4
+#define Depth 10
 
 #define randomize() srand((unsigned)time(NULL))     // srand 매크로
 #define random(n) (rand() % (n))                    // rand 매크로.
@@ -37,6 +37,8 @@ void PrintArray(T1(&result)[row][col])
 				cout << ".";
 			else if (result[i][j] == 3)		//지옥지형
 				cout << "*";
+			else if (result[i][j] == 4)		//지옥지형
+				cout << "!";
 			else
 				cout << " ";
 		}
@@ -126,14 +128,7 @@ void CellAutomata(T1(&cell)[row][col], T1(&temp)[row][col])
 					if (cell[i - 1][j] == 3)
 						Hcount++;
 				}
-				//if (count > 4)
-				//	temp[i][j] = 1;
-				//else if (count <4)
-				//	temp[i][j] = 0;
-				//else
-				//{
-				//	temp[i][j] = random(2);
-				//}
+
 				if (Hcount + Jcount + Rcount > 4)
 				{
 					if (Hcount >= Rcount && Hcount >= Jcount)
@@ -290,6 +285,73 @@ void AddHellField(T1(&cell)[row][col])
 	}
 }
 
+
+
+template <typename T1, int row, int col>
+void AddGroundHoll(T1(&cell)[row][col])
+{
+	//const size_t jungleScaleH = 50;
+	//const size_t jungleScaleW = 100;
+	size_t HollH = random(GROUND);//random(Hell_MIN_H - jungleScaleH);
+	size_t HollD = random(25)+ GROUND;
+	size_t HollW2 = random(6);//random(MapW - jungleScaleW);
+
+
+	for (size_t i = HollH; i < HollH+ HollD; i++)
+	{
+		size_t HollW1 = random(MapW-20)+20;//random(MapW - jungleScaleW);
+		for (size_t j = HollW1; j <HollW1+HollW2; j++)
+		{
+			if (cell[i][j] == 1)
+				cell[i][j] = 0;
+		}
+	}
+
+}
+
+
+template <typename T1, int row, int col>
+void AddSea(T1(&cell)[row][col])
+{
+	size_t SEA_depth =10;
+	size_t sea1_x = 30;
+	size_t sea2_x = 40;
+
+	int count = 0;
+	for (size_t i = GROUND; i < GROUND+ SEA_depth; i++)
+	{
+		for (size_t j = 0; j <sea1_x - count; j++)
+		{
+			cell[i][j] = 0;
+		}
+		count++;
+	}
+
+	count = 0;
+	for (size_t i = GROUND; i < GROUND+SEA_depth; i++)
+	{
+		for (size_t j = MapW - sea2_x + i; j <MapW; j++)
+		{
+			cell[i][j] = 0;
+		}
+		count++;
+	}
+}
+template <typename T1, int row, int col>
+void MonsterSponer(T1(&cell)[row][col])
+{
+	for (size_t i = 0; i < MapH; i++)
+	{
+		for (size_t j = 0; j < MapW; j++)
+		{
+			if (cell[i][j] == 0 && random(100) > 98)
+				cell[i][j] = 4;
+
+		}
+	}
+}
+
+
 int main()
 {
 	randomize();
@@ -304,8 +366,15 @@ int main()
 	//PrintArray(cell);
 	//PrintArray(cell);
 	//PrintArray(cell);
-	CellAutomata(cell, result);
 	//PrintArray(cell);
+
+	for (size_t i = 0; i < 23; i++)
+	{
+		AddGroundHoll(cell);
+	}
+	CellAutomata(cell, result);
+	AddSea(cell);
+	MonsterSponer(cell);
 	PrintArray(cell);
 
 	return 0;
