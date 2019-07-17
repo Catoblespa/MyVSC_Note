@@ -114,7 +114,6 @@ void DELETER(Container<T*,allocator<T*>> con) // vector < T> list <T>
 		if (i != nullptr)
 			delete i;
 	}
-
 	con.clear();
 
 //	cout << "할뚜이따	" << endl;

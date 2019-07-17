@@ -1,0 +1,69 @@
+
+
+GetMessage는 메시지가 오지 않으면 프로그램이 멈춰버리는 문제점이 있다.
+GetMessage 대신 peekMessage 함수를 쓰도록하자.
+
+
+peekMessage 함수 : 메시지 큐에 메시지가 존재하는지 검사하는 함수.
+    -메시지가 존재한다면 TRUE반환 , 그렇지 않으면 FALSE를 반환한다.
+    //PM_REMOVE     : GetMessage처럼 메시지를 큐에서 얻어옴. 얻어온 메시지는 큐에서 제거됨.
+    //PM_NOREMOVE   : 순수하게 메시지가 큐에 있는지 없는지만 조사함
+    GetMessage(&msg, nullptr, 0, 0);
+    PeekMessage(&msg, nullptr, 0, 0 , PM);
+
+    게임은 메시지가 없어도 계속 돌아가야 하므로, PeekMessage가 더 적합하다. 
+
+
+    
+게임 로직
+    Init -> 순환( Update ,  Render ) -> Release
+
+
+	//GetDC : 출력 DC 생성 함수.
+	m_hDC = GetDC(g_hWnd);
+
+
+	//GetDC함수로 할당받은 DC는 아래 함수로 해제해주어야 한다.
+    ReleaseDC(g_hWnd,m_hDC);
+
+
+    GetAsyncKeyState(VK); : 해당키가 눌렸는지 조사하는 함수.
+        반환값
+        0x0000  이전에 누른 적이 없고 호출 시점에서 안눌린 상태 //양수
+        0x8000  이전에 누른 적이 없고 호출 시점에서 눌린 상태   //음수
+        0x8001  이전에 누른 적이 있고 호출 시점에서 눌린 상태   //음수
+        1(0x0001)  이전에 누른 적이 있고 호출 시점에서 안눌린 상태 //양수
+
+
+if (GetAsyncKeyState(VK_Defined) & 0x8000)   이 함수가 음수를 반환하면 트루
+
+
+
+//GetTickCount함수 : 운영체제가 시작된 뒤로 흐른시각을 누적한 값을 반환하는 함수.
+DWORD dwOldTime = GetTickCount(); // GetTickCount가 1000을 반환하면 1초가 지난것임.
+DWORD dwCurTime = 0;
+
+
+while(true) // 게임루프!
+{
+    dwCurTime = GetTickCount();
+
+    //dwCurTime - dwOldTime 이 1000보다 크거나 같으면 1초가 흐른것임
+    if(dwCurTime - dwOldTime >= 10);    //0.01초 간격으로 진행
+    {
+        Update();
+        Render();
+        dwOldTime =dwCurTime;
+    }
+}
+
+
+Rectangle을 현재 윈도우 크기로 계속 그려주고..
+
+    그후에 모든 오브젝트를 그려주면 InvaliedRect안써도.. 안깜빡인다.
+
+
+
+//숙제 총알 이 일정 범위 밖으로 나가면 사라지게 만들기!
+
+
