@@ -13,8 +13,10 @@ public:
 	Celsius() { }
 	Celsius(double aTem) : Tem(aTem) { }
 
-	//변환 생성자를 사용하여 클래스 변환, 단 Celsius에서는 Fahernheit가 밑에 정의 되어 있어서 정확한 내부는 찾을 수 없으므로, 클래스를 분할컴파일 할때만 가능!!
+	//변환 생성자를 사용하여 클래스 변환, 단 Celsius에서는 Fahernheit가 밑에 정의 되어 있어서 정확한 내부는 찾을 수 없으므로, 
+	//클래스를 분할컴파일 할때만 가능!!
 	//explicit Celsius(Fahrenheit F)
+
 	//{
 	//	Tem = (F.Tem - 32) / 1.8;
 	//}

@@ -12,7 +12,6 @@ using namespace std;
 */
 
 class Time
-
 {
 
 	friend const Time operator+(const Time& T1, const Time& T2);

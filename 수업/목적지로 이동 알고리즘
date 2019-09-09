@@ -1,0 +1,26 @@
+
+                    인자                반환
+cos 함수        끼인각              밑변/빗변
+acos 함수       밑변/빗변           끼인각
+
+
+도착지 - 출발지 = 출발지에서 도착지로 향하는 방향이 나온다
+
+float w = Target->GetInfo().fX - m_Info.fX;     //밑변
+floaw h = Target->GetInfo().fy - m_Info.fY      //높이
+
+float d = sqrtf(w*w + h*h);
+
+//cos비 : 밑/빗
+//acosf 가 반환하는 각도 버위는 0 ~ 180 이다. (삼각형의 최대각도는 180도를 넘을 수 없다!)
+ m_fAngle = acosf(w/d);     //cos비를 인자로 삼아 끼안각을 라디안 단위로 반환한다.
+                            //m_fAngle는 라디안각임!
+
+if( m_Info.fY < Target->GetInfo().fY)
+    m_fAngle *= -1.f;
+
+m_Info.fX += cosf(m_fAngle ) * m_fSpeed;
+m_Info.fY -= sinf(m_fAngle ) * m_fSpeed;        //여기까지만 쓰면 목적지가 아래에 있을경우 못찾아간다! 
+                                                //위의 if문을 꼭 써줘야함.
+
+
