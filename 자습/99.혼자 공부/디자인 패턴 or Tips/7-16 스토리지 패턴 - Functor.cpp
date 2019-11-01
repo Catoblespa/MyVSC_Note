@@ -1,8 +1,6 @@
 // ConsoleApplication2.cpp : 콘솔 응용 프로그램에 대한 진입점을 정의합니다.
 //
 
-#include "stdafx.h"
-#include<functional>
 
 using namespace std;
 
@@ -43,7 +41,7 @@ public:
     // N1, N2, ...      : 인자 타입들
 	//출처:[TR1] function
 	//자세한 내용은 아래를 보시면 나옵니다.
-	typedef function<int(const GameCharacter_v1&)> HealthCalcFunc;
+	typedef function을<int(const GameCharacter_v1&)> HealthCalcFunc;
 
 	explicit GameCharacter_v1(HealthCalcFunc hcf = defaultHealthCalc)
 		:healthCalcFunc(hcf)

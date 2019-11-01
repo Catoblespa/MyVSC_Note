@@ -1,7 +1,6 @@
 // ConsoleApplication2.cpp : 콘솔 응용 프로그램에 대한 진입점을 정의합니다.
 //
 
-#include "stdafx.h"
 
 /*
 NVI 관용구는 public 가상 함수를 대신 할 수 있는 꽤 괜찮은 방법이지만,

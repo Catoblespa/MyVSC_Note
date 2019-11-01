@@ -1,0 +1,15 @@
+CWinApp  클래스 - > CView , CMainFrm CDocument
+
+CMainFrm : 창의 프레임을 구성
+CView    : 프레임이 포함하고있는 아무것도 없는 흰 바탕
+CDocument: 내부 구현
+
+
+CObject  모든 MFC 클래스의 기반클래스
+    -CCmdTarget         : 커맨드 메시지를 받는 기능
+      ㄴ-CWinApp        : 프로그램을 구동시키는 기능   
+        -CDocument      : 데이터를 저장하고 처리하는 기능
+        -CWnd           : Window에 관련된 기능(눈에 보이는 오브젝트)
+          ㄴ-CFrameWnd  : 프로그램 Window프레임을 관리하는 기능
+            -CView      : 데이터를 보여주는 WIndow를 관리하는 기능
+            

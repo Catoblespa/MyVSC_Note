@@ -1,0 +1,15 @@
+
+
+//여기까지가 DESTBREND
+Device->End();      ->
+
+//여기서 부터 SRCBREND 
+Device->Begin();    -> SRC
+
+Device->GetSprite()->Begin(D3DXSPRTIE_ALPHABLEND);
+
+pixell = D3DRS_SRCBLEND * D3DBLEND_SRCCOLOR
+D3DRS_STCD3DRS_SRCBLENDBLEND : 이제 그려야할 이미지의 픽셀 (RGBA)
+D3DBLEND_SRCCOLOR :D3DRS_SRCBLEND의 RGBA를 0~1 범위로 환산한 값.
+
+Device->GetDevice()->SetRenderState

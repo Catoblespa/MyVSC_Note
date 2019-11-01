@@ -1,0 +1,12 @@
+
+	D3DXMatrixPerspectiveFovLH(								//원근 투영행렬 정의
+		&matProj,											//Output
+		D3DX_PI * 0.5f, // 90 - degree						//시야각의 수직영역
+		(float)WINCX / (float)WINCY,						//종횡비 = 너비 / 높이
+		1.0f,												//가까운 평면까지의 거리		요 사이에 있는거만 표현된다.
+		10000.0f);											//먼 평면까지의 거리.
+	m_pDevice->SetTransform(D3DTS_PROJECTION, &matProj);	//투영행렬 적용
+
+
+	 D3DXMatrixOrthoLH(&matProj,WINCX, WINCY,1.0f,1000.f); // 직교 투영 행렬 정의
+	 m_pDevice->SetTransform(D3DTS_PROJECTION, &matProj);
